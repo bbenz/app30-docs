@@ -121,3 +121,71 @@ Azure Cosmos DB is a fully managed database service with turnkey global distribu
 
 Azure Key Vault is a tool for securely storing and accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. A vault is logical group of secrets.
 
+
+### Story about Tailwind
+
+Tailwind Traders has begun their transition into the cloud. Originally, they were working with a lift and shift style migration until they realized it was time to optimize their deployment.  In this demo we'll show how the Tailwind Traders store will take it's next step in moderinzation by using several Azure managed services:
+
+  * Web app for containers
+    - Includes SSL (https)
+    - backups
+    - autoscaling
+    - Custom Docker images
+  * Azure Container Registry
+  * Microsoft Azure SQL
+  * Azure Cosmos DB 
+  * Azure Key Vault
+
+
+# Demo
+
+We'll implement the Tailwind Traders Application as a containerized one using Web App Service for Containers.  We'll create a custom Docker image and then store it in the Azure Container Registry.  Once our container is built, we'll deploy it to our web app service and configure required environment variables and connection strings with key vault.
+
+### Create Resource Group
+
+Demo:
+
+1. Open portal
+2. Open cloud shell
+3. Create a resource group
+
+**SPOKEN** "We're goung to create a resource group, in this command I'll name it igniteapp30, put it in my subscription specific to my app and then provide a location where our metadata for our resource group will be held"
+ 
+```
+az group create --subscription "Ignite The Tour" --name igniteapp30 --location eastus
+```
+
+4. VNET creation
+
+**SPOKEN** "Now it's time to create our virtual network, this will replace all network gear you used to have to maintain.  Rather than configuring switchports and replacing failed line-cards, you can manage your network from the commandline or portal.
+
+```
+az network vnet create --name igniteapp30vnet --subscription  "Ignite The Tour" --resource-group igniteapp30    --subnet-name default
+```
+
+5. Show VNET in portal 
+
+6. Create MS SQL Azure Server and then DB (portal)
+
+7. Create Azure Cosmos DB instance (portal)
+
+8. Create Azure Container Registry
+
+```
+az acr create --resource-group igniteapp30 --name igniteapp30acr --sku Basic --subscription  "Ignite The Tour"
+```
+
+9. Log in to registry
+
+```
+az acr login --name igniteapp30acr --subscription  "Ignite The Tour"
+```
+
+10. Clone repo in cloud shell
+
+```
+git clone https://github.com/anthonychu/TailwindTraders-Website.git
+cd TailwindTraders-Website
+git checkout monolith 
+```
+
