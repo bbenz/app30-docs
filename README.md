@@ -11,7 +11,7 @@ _In this session, you’ll learn how to manage containers for deployment, option
 **Welcome to APP30**
 
 
-Goals:
+Goals: Is a feature, since Docker 17.05 or higher, that helps to reduce the size of the final images. In a few sentences, with multi-stage build you can use, for example, a large base image, containing the SDK, for compiling and publishing the application and then using the publishing folder with a small runtime-only base image, to produce a much smaller final image:
 
 1. Look at the new ways we can host our web applications and databases in the cloud.  
 2. Discuss containers: what they are and how they can help improve modernize our application deployments
@@ -63,7 +63,7 @@ Let’s walk through how we can get the process started and all the benefits you
 
 ### Introduction to Containers and Docker
 
-[Containerization](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/)is an approach to software development in which an application or service, its dependencies, and its configuration (abstracted as deployment manifest files) are packaged together as a container image. The containerized application can be tested as a unit and deployed as a container image instance to the host operating system (OS).
+[Containerization](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/) is an approach to software development in which an application or service, its dependencies, and its configuration (abstracted as deployment manifest files) are packaged together as a container image. The containerized application can be tested as a unit and deployed as a container image instance to the host operating system (OS).
 
 ![containers](images/image1.png)
 
@@ -87,5 +87,34 @@ To host containers in development environments and provide additional developer 
 | -----------------| ------------------|
 |![For VMs, there are three base layers in the host server, from the bottom-up: infrastructure, Host Operating System and a Hypervisor and on top of all that each VM has its own OS and all necessary libraries.](./images/image3.png)|![For Docker, the host server only has the infrastructure and the OS and on top of that, the container engine, that keeps container isolated but sharing the base OS services.](./images/image4.png)|
 |Virtual machines include the application, the required libraries or binaries, and a full guest operating system. Full virtualization requires more resources than containerization. | Containers include the application and all its dependencies. However, they share the OS kernel with other containers, running as isolated processes in user space on the host operating system. (Except in Hyper-V containers, where each container runs inside of a special virtual machine per container.) |
+
+### Docker images
+
+Container image: A package with all the dependencies and information needed to create a container. An image includes all the dependencies (such as frameworks) plus deployment and execution configuration to be used by a container runtime. Usually, an image derives from multiple base images that are layers stacked on top of each other to form the container's filesystem. An image is immutable once it has been created.
+
+### Dockerfiles
+
+A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. Using docker build users can create an automated build that executes several command-line instructions in succession.
+
+You can specify your operating system or runtime required for your application here as well as how the application will be built. Think of your Dockerfile as another piece of software you maintain along with your app.  You'll manage this within your git repository. 
+
+Multi-stage builds are a feature, since Docker 17.05 or higher, that helps to reduce the size of the final images. In a few sentences, with multi-stage build you can use, for example, a large base image, containing the SDK, for compiling and publishing the application and then using the publishing folder with a small runtime-only base image, to produce a much smaller final image
+
+
+### Docker Registry and Azure Container Registry
+
+A registry is a storage and content delivery system, holding named Docker images, available in different tagged versions.
+
+An Azure container registry is a private Docker registry in Azure where you can store and manage your private Docker container images. In this quickstart, you create a container registry with the Azure portal. Then, use Docker commands to push a container image into the registry, and finally pull and run the image from your registry.
+
+### Databases
+
+Another major part of moderinzing our applications is reducing the amount of overhead that comes along with hosting our databases.  Modern database hosting via "Database as a service" offerings such as Azure MSSQL and Cosmos DB allow teams to get the most out of their data without all the administration.  
+
+Take away the need to run backups, configure replication and failover by using these services rather than hosting your own databases on a VM.
+
+Azure SQL Database is a general-purpose relational database-as-a-service (DBaaS) based on the latest stable version of Microsoft SQL Server Database Engine. SQL Database is a high-performance, reliable, and secure cloud database that you can use to build data-driven applications and websites in the programming language of your choice, without needing to manage infrastructure.
+
+Azure Cosmos DB is a fully managed database service with turnkey global distribution and transparent multi-master replication. You can run globally distributed, low-latency operational and analytics workloads and AI on transactional data within your database
 
 
