@@ -230,9 +230,13 @@ MongoConnectionString="mongodb://:Hi5L2yajHopNUTDZRU8uDQf6hXYrK7WUPM4FVgk4P9h2VI
 ### Env Vars
 
 ```
-export apiUrl=/api/v1 
-export ApiUrlShoppingCart=/api/v1 
+apiUrl=/api/v1 
+ApiUrlShoppingCart=/api/v1 
 ```
+
+![](images/shot1.png)
+![](images/shot2.png)
+
 16. View webapp url and verify running app (show container settings in portal, then navigate to the web url)
 
 ### Close
