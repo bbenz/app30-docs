@@ -117,4 +117,7 @@ Azure SQL Database is a general-purpose relational database-as-a-service (DBaaS)
 
 Azure Cosmos DB is a fully managed database service with turnkey global distribution and transparent multi-master replication. You can run globally distributed, low-latency operational and analytics workloads and AI on transactional data within your database
 
+### Key Vault
+
+Azure Key Vault is a tool for securely storing and accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. A vault is logical group of secrets.
 
