@@ -1,5 +1,7 @@
 # APP30 Demo Instructions
 
+** The creds below have been obscured.  You will need to ensure you have an MSSQL and Cosmos MongoDB API instance prior to start of demo **
+
 # Abstract
 
 _Tailwind Traders’ recently moved one of its core applications  from a virtual machine into containers, gaining deployment flexibility and repeatable builds._
@@ -117,7 +119,7 @@ Azure SQL Database is a general-purpose relational database-as-a-service (DBaaS)
 
 Azure Cosmos DB is a fully managed database service with turnkey global distribution and transparent multi-master replication. You can run globally distributed, low-latency operational and analytics workloads and AI on transactional data within your database
 
-### Key Vault
+### Key Vault (Optional)
 
 Azure Key Vault is a tool for securely storing and accessing secrets. A secret is anything that you want to tightly control access to, such as API keys, passwords, or certificates. A vault is logical group of secrets.
 
@@ -134,7 +136,7 @@ Tailwind Traders has begun their transition into the cloud. Originally, they wer
   * Azure Container Registry
   * Microsoft Azure SQL
   * Azure Cosmos DB 
-  * Azure Key Vault
+  * Azure Key Vault (Optional)
 
 
 # Demo
@@ -189,3 +191,52 @@ cd TailwindTraders-Website
 git checkout monolith 
 ```
 
+11. Create app service plan
+
+```
+az appservice plan create --name igniteapp30plan --resource-group igniteapp30 --sku B1 --is-linux --subscription  "Ignite The Tour"
+```
+
+12. Build and push container
+
+```
+cd TailwindTraders-Website/Source/Tailwind.Traders.Web/
+az acr build --subscription  "Ignite The Tour" --registry igniteapp30acr  --image twtapp:v1 .
+```
+
+
+13. Create web app
+
+```
+az webapp create  --subscription  "Ignite The Tour" --resource-group igniteapp30 --plan  --name twtwebapp30 --deployment-container-image-name igniteapp30acr.azurecr.io/twtapp:v1 
+```
+
+14. Navigate to App Settings in portal
+
+15. Add connection string:
+
+### SQL Server
+
+```
+SqlConnectionString="Server=tcp:twtsqlmod20.database.windows.net,1433;Initial Catalog=twtmod10;Persist Security Info=False;User ID=twtmod10;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" 
+```
+
+### MongoDB Server
+
+```
+MongoConnectionString="mongodb://:Hi5L2yajHopNUTDZRU8uDQf6hXYrK7WUPM4FVgk4P9h2VIRHircIkyKB7NFH0bTqC9WPBvHXc1YGGn2Y8XrHPw==@twtnosql.documents.azure.com:10255/?ssl=true&amp;replicaSet=globaldb" 
+```
+
+### Env Vars
+
+```
+export apiUrl=/api/v1 
+export ApiUrlShoppingCart=/api/v1 
+```
+16. View webapp url and verify running app (show container settings in portal, then navigate to the web url)
+
+### Close
+
+You've now learned how to move an application a little further in your moderinzation journey.  You're removing your need to manually manage systems and adding scale based on needs, not what you bought a long time ago.  
+
+Stick around for the MOD40 and learn how you can take your next step in containers on Azure and work with Kubernetes.
