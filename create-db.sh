@@ -17,7 +17,7 @@ sqldbname=twtsql
 az group create --subscription $subname --name $azureResourceGroup --location $location
 
 # Create Azure Cosmos DB
-az cosmosdb create --name $cosmosdbname --resource-group $azureResourceGroup --kind MongoDB --subscription $subname --location 
+az cosmosdb create --name $cosmosdbname --resource-group $azureResourceGroup --kind MongoDB --subscription $subname 
 
 cosmosConnectionString=$(az cosmosdb list-connection-strings --name $cosmosdbname  --resource-group $azureResourceGroup --query connectionStrings[0].connectionString -o tsv --subscription $subname)
 
