@@ -174,7 +174,7 @@ az network vnet create --name igniteapp30vnet --subscription  "Ignite The Tour" 
 8. Create Azure Container Registry
 
 ```
-az acr create --resource-group igniteapp30 --name igniteapp30acr --sku Basic --subscription  "Ignite The Tour"
+az acr create --resource-group igniteapp30 --name igniteapp30acr --sku Basic --subscription  "Ignite The Tour" --admin-enabled true
 ```
 
 9. Log in to registry
