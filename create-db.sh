@@ -4,7 +4,7 @@ set -e
 # Credentials
 azureResourceGroup=igniteapps30
 adminUser=twtadmin
-adminPassword=twtmod10pD
+adminPassword=twtapps30pD
 subname=cd400f31-6f94-40ab-863a-673192a3c0d0
 location=eastus
 
@@ -14,11 +14,10 @@ cosmosdbname=twtnosql
 sqldbname=twtsql
 
 # Create Resource Group
-az group create --subscription $subname --name $azureResourceGroup --location
-$location
+az group create --subscription $subname --name $azureResourceGroup --location $location
 
 # Create Azure Cosmos DB
-az cosmosdb create --name $cosmosdbname --resource-group $azureResourceGroup --kind MongoDB --subscription $subname
+az cosmosdb create --name $cosmosdbname --resource-group $azureResourceGroup --kind MongoDB --subscription $subname --location 
 
 cosmosConnectionString=$(az cosmosdb list-connection-strings --name $cosmosdbname  --resource-group $azureResourceGroup --query connectionStrings[0].connectionString -o tsv --subscription $subname)
 

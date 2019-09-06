@@ -151,10 +151,10 @@ Demo:
 2. Open cloud shell
 3. Create a resource group
 
-**SPOKEN** "We're goung to create a resource group, in this command I'll name it igniteapp30, put it in my subscription specific to my app and then provide a location where our metadata for our resource group will be held"
+**SPOKEN** "We're goung to create a resource group, in this command I'll name it igniteapps30, put it in my subscription specific to my app and then provide a location where our metadata for our resource group will be held"
  
 ```
-az group create --subscription "Ignite The Tour" --name igniteapp30 --location eastus
+az group create --subscription "Ignite The Tour" --name igniteapps30 --location eastus
 ```
 
 4. VNET creation
@@ -162,7 +162,7 @@ az group create --subscription "Ignite The Tour" --name igniteapp30 --location e
 **SPOKEN** "Now it's time to create our virtual network, this will replace all network gear you used to have to maintain.  Rather than configuring switchports and replacing failed line-cards, you can manage your network from the commandline or portal.
 
 ```
-az network vnet create --name igniteapp30vnet --subscription  "Ignite The Tour" --resource-group igniteapp30    --subnet-name default
+az network vnet create --name igniteapps30vnet --subscription  "Ignite The Tour" --resource-group igniteapps30    --subnet-name default
 ```
 
 5. Show VNET in portal 
@@ -174,13 +174,13 @@ az network vnet create --name igniteapp30vnet --subscription  "Ignite The Tour" 
 8. Create Azure Container Registry
 
 ```
-az acr create --resource-group igniteapp30 --name igniteapp30acr --sku Basic --subscription  "Ignite The Tour" --admin-enabled true
+az acr create --resource-group igniteapps30 --name igniteapps30acr --sku Basic --subscription  "Ignite The Tour" --admin-enabled true
 ```
 
 9. Log in to registry
 
 ```
-az acr login --name igniteapp30acr --subscription  "Ignite The Tour"
+az acr login --name igniteapps30acr --subscription  "Ignite The Tour"
 ```
 
 10. Clone repo in cloud shell
@@ -194,21 +194,21 @@ git checkout monolith
 11. Create app service plan
 
 ```
-az appservice plan create --name igniteapp30plan --resource-group igniteapp30 --sku B1 --is-linux --subscription  "Ignite The Tour"
+az appservice plan create --name igniteapps30plan --resource-group igniteapps30 --sku B1 --is-linux --subscription  "Ignite The Tour"
 ```
 
 12. Build and push container
 
 ```
 cd TailwindTraders-Website/Source/Tailwind.Traders.Web/
-az acr build --subscription  "Ignite The Tour" --registry igniteapp30acr  --image twtapp:v1 .
+az acr build --subscription  "Ignite The Tour" --registry igniteapps30acr  --image twtapp:v1 .
 ```
 
 
 13. Create web app
 
 ```
-az webapp create  --subscription  "Ignite The Tour" --resource-group igniteapp30 --plan  --name twtwebapp30 --deployment-container-image-name igniteapp30acr.azurecr.io/twtapp:v1 
+az webapp create  --subscription  "Ignite The Tour" --resource-group igniteapps30 --plan  --name twtwebapp30 --deployment-container-image-name igniteapps30acr.azurecr.io/twtapp:v1 
 ```
 
 14. Navigate to App Settings in portal
