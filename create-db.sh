@@ -10,8 +10,8 @@ location=eastus
 
 # DB Name
 
-cosmosdbname=twtnosql
-sqldbname=twtsql
+cosmosdbname=apps30twtnosql
+sqldbname=apps30twtsql
 
 # Create Resource Group
 az group create --subscription $subname --name $azureResourceGroup --location $location

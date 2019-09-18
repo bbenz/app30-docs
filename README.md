@@ -177,43 +177,38 @@ az network vnet create --name igniteapps30vnet --subscription  "Ignite The Tour"
 az acr create --resource-group igniteapps30 --name igniteapps30acr --sku Basic --subscription  "Ignite The Tour" --admin-enabled true
 ```
 
-9. Log in to registry
+9. Clone repo in cloud shell
 
 ```
-az acr login --name igniteapps30acr --subscription  "Ignite The Tour"
-```
-
-10. Clone repo in cloud shell
-
-```
-git clone https://github.com/anthonychu/TailwindTraders-Website.git
-cd TailwindTraders-Website
+mkdir igniteapps30
+git clone https://github.com/anthonychu/TailwindTraders-Website.git igniteapps30/ 
+cd igniteapps30/TailwindTraders-Website
 git checkout monolith 
 ```
 
-11. Create app service plan
+10. Create app service plan
 
 ```
 az appservice plan create --name igniteapps30plan --resource-group igniteapps30 --sku B1 --is-linux --subscription  "Ignite The Tour"
 ```
 
-12. Build and push container
+11. Build and push container
 
 ```
 cd TailwindTraders-Website/Source/Tailwind.Traders.Web/
-az acr build --subscription  "Ignite The Tour" --registry igniteapps30acr  --image twtapp:v1 .
+az acr build --subscription  "Ignite The Tour" --registry igniteapps30acr twtapp:v1 .
 ```
 
 
-13. Create web app
+12. Create web app
 
 ```
-az webapp create  --subscription  "Ignite The Tour" --resource-group igniteapps30 --plan igniteapps30 --name twtwebapp30 --deployment-container-image-name igniteapps30acr.azurecr.io/twtapp:v1 
+az webapp create  --subscription  "Ignite The Tour" --resource-group igniteapps30 --plan igniteapps30 --name twtwebapp30 
 ```
 
-14. Navigate to App Settings in portal
+13. Navigate to App Settings in portal
 
-15. Add connection string:
+14. Add connection string:
 
 ### SQL Server
 
@@ -243,4 +238,4 @@ ApiUrlShoppingCart=/api/v1
 
 You've now learned how to move an application a little further in your moderinzation journey.  You're removing your need to manually manage systems and adding scale based on needs, not what you bought a long time ago.  
 
-Stick around for the MOD40 and learn how you can take your next step in containers on Azure and work with Kubernetes.
+stick around for the MOD40 and learn how you can take your next step in containers on Azure and work with Kubernetes.
