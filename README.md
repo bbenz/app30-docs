@@ -195,7 +195,8 @@ az appservice plan create --name igniteapps30plan --resource-group igniteapps30 
 11. Build and push container
 
 ```
-az acr build --subscription  "Ignite The Tour" --registry igniteapps30acr twtapp:v1 .
+az acr build --subscription  "Ignite The Tour" --registry igniteapps30acr --image twtapp:v1 .
+
 ```
 
 
