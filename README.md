@@ -182,7 +182,7 @@ az acr create --resource-group igniteapps30 --name igniteapps30acr --sku Basic -
 ```
 mkdir igniteapps30
 git clone https://github.com/anthonychu/TailwindTraders-Website.git igniteapps30/ 
-cd igniteapps30/TailwindTraders-Website
+cd igniteapps30/Source/Tailwind.Traders.Web
 git checkout monolith 
 ```
 
@@ -195,7 +195,6 @@ az appservice plan create --name igniteapps30plan --resource-group igniteapps30 
 11. Build and push container
 
 ```
-cd TailwindTraders-Website/Source/Tailwind.Traders.Web/
 az acr build --subscription  "Ignite The Tour" --registry igniteapps30acr twtapp:v1 .
 ```
 
