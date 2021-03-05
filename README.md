@@ -65,7 +65,7 @@ Let’s walk through how we can get the process started and all the benefits you
 
 ### Introduction to Containers and Docker
 
-[Containerization](https://docs.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/) is an approach to software development in which an application or service, its dependencies, and its configuration (abstracted as deployment manifest files) are packaged together as a container image. The containerized application can be tested as a unit and deployed as a container image instance to the host operating system (OS).
+[Containerization](https://docs.microsoft.com/dotnet/architecture/microservices/container-docker-introduction/?WT.mc_id=java-0000-bbenz) is an approach to software development in which an application or service, its dependencies, and its configuration (abstracted as deployment manifest files) are packaged together as a container image. The containerized application can be tested as a unit and deployed as a container image instance to the host operating system (OS).
 
 ![containers](images/image1.png)
 
